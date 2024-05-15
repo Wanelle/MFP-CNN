@@ -257,7 +257,7 @@ class ResNet(nn.Module):
         self.bn44 = nn.BatchNorm2d(2048)
         self.LogSoftmax = nn.LogSoftmax(dim=1)
         self.fla = nn.Flatten(1)
-        self.Linear1 = nn.Linear(512, 256)
+        self.Linear1 = nn.Linear(10752, 256)
        # self.Linear1 = nn.Linear(28, 512)
         self.Dropout = nn.Dropout(dropout_rate)
         self.Linear2 = nn.Linear(256, 67)
@@ -336,33 +336,33 @@ class ResNet(nn.Module):
         x=self._upsample_add(x1,x2)
         x=self._upsample_add(x3,x)
         x=self._upsample_add(x4,x)
-       # SE = se_block(in_channel=in_channel).to(DEVICE)
-#        x = self.se1(x)
+        #SE = se_block(in_channel=in_channel).to(DEVICE)
+        x = self.se1(x)
 
- #       num_sample = x.shape[0]
+        num_sample = x.shape[0]
 
-  #      x = self.spp(x, num_sample)
+        x = self.spp(x, num_sample)
 
         # print("6")
-        x=self.avgpool6(x)
+        #x=self.avgpool6(x)
         # x=torch.cat([x,y],1)    #去掉
-     #   print(x.shape)
-        x=self.fla(x)
+        #print(x.shape)
+        #x=self.fla(x)
         x = self.Linear1(x)
         x = self.relu(x)
         x = self.Dropout(x)
         x = self.Linear2(x)
         x = self.LogSoftmax(x)
         # print(x.shape)
-     #论文复现
-      #  result = torch.cat([x1, x2,x3,x4], 1)
-      #  result = self.Linear1(result)
-       # result = self.relu(result)
-       # result = self.Dropout(result)
-       # result = self.Linear2(result)
+        #论文复现
+        #  result = torch.cat([x1, x2,x3,x4], 1)
+        #  result = self.Linear1(result)
+        # result = self.relu(result)
+        # result = self.Dropout(result)
+        # result = self.Linear2(result)
         #result=self.LogSoftmax(result)
         #论文复现
-       # return result
+        # return result
         return x
 
 
@@ -423,7 +423,7 @@ image_transforms = {
     ])
 }
 
-train_dataset = datasets.ImageFolder(root=r'C:\Users\可可豆子\Desktop\mit67\train', transform=image_transforms['train'])
+train_dataset = datasets.ImageFolder(root=r'E:\mit67\train', transform=image_transforms['train'])
 #datasets.ImageFolder(root=r'C:\Users\可可豆子\Desktop\t3_pic\train', transform=image_transforms['valid'])
 
 
