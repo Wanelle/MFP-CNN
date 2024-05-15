@@ -12,6 +12,8 @@ To compile the Scene7 dataset, we gather images from  various sources, including
 ![](https://github.com/Wanelle/MFP-CNN-for-Scene-Classification/blob/main/asserts/images/image%20number.png?raw=true)
 ![](https://github.com/Wanelle/MFP-CNN-for-Scene-Classification/blob/main/asserts/images/instances%20of%20image.png?raw=true)
 
+
+Since GitHub does not support uploading very large files, we uploaded the Scene7 dataset and part of the Scene7 dataset that can be used for object detection on Kagglea. The links are:。。。
 # MFP-CNN
 The MFP-CNN leverages advanced techniques such as feature fusion, spatial pyramid pooling, and attention mechanisms to enhance the accuracy and robustness of scene classification. Specifically, we propose a Lightweight Multi-Stage Feature Fusion (LMSFF) method to handle the intra-class diversity by effectively fusing features from different scales and capturing multi-scale information. This enables the model to capture both global context and fine-grained details, improving the discriminative power of the features. To address the challenge of object size variations, we incorporate Spatial Pyramid Pooling (SPP) into the network architecture. SPP allows the model to consider features at multiple spatial scales, enabling better representation of scenes with objects of different sizes. Furthermore, we introduce the Squeeze-and-Excitation (SE) mechanism to enhance feature extraction by focusing on informative regions of the scene. The SE mechanism enables the model to allocate attention to important image regions and capture discriminative features, leading to improved classification accuracy.
 ![](https://github.com/Wanelle/MFP-CNN-for-Scene-Classification/blob/main/asserts/images/model.png?raw=true)
